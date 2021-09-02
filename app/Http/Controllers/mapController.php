@@ -13,7 +13,7 @@ class mapController extends Controller
     function show(){
         #report coursemap's name、url
         $cline['資應']=map_model::where('name',"資應%")->all();
-        $cline['資管']=map_model::whereNotIn('name',"資應%")->all();
+        $cline['資管']=map_model::where('name', '!=' ,"資應%")->orWhereNull('name')->all();
         return view('',[
             'value'=>$cline
         ]);

@@ -5,14 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class map_model extends Model
+class build_model extends Model
 {
     use HasFactory;
-    protected $table='coursemap';
-    protected $primaryKey = 'name';
-    protected $keyType = 'varchar';
+    protected $table='building';
+    protected $primaryKey = 'code';
+    protected $keyType = 'int';
     protected $fillable=[
+        'code',
         'name',
-        'url'
+        'campus'
     ];
 }
