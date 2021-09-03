@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class mapController extends Controller
 {
     function update(Request $R){
-        $recheck=$R->validate(['name'=>'required']);
+        $recheck=$R->validate(['name'=>'required','url'=>'required']);
     }
     function show(){
         #report coursemap's name、url

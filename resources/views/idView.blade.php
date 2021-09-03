@@ -49,8 +49,41 @@ background: black;
    
     
     <body class="antialiased"> 
-        <form action="" method="POST">
+        <table>
+            
+            @foreach ($value->building as $item)
+            <tr>
+                <td>code: {{$item->code}}</td><td>{{$item->name}}</td><td>{{$item->campus}}</td>
+            </tr>
+            @endforeach
+            
+        </table>
+        
+        <table>
+            
+            @foreach ($value->office as $item)
+            <tr>
+                <td>code: {{$item->code}}</td><td>{{$item->name}}</td>
+            </tr>
+            @endforeach
+            
+        </table>
+        <form action="/backID/Bupdate" method="POST">
             {{ csrf_field() }}
+            
+            <input type="hidden" name="Ocode"><!--需存下原code-->
+            <input type="text" name="code">
+            <input type="text" name="name">
+            <input type="text" name="campus">
+            <input type="submit" value="">
+        </form>
+        <form action="/backID/Oupdate" method="POST">
+            {{ csrf_field() }}
+            
+            <input type="hidden" name="Ocode"><!--需存下原code-->
+            <input type="text" name="code">
+            <input type="text" name="name">
+            <input type="submit" value="">
         </form>
     </body>
 </html>

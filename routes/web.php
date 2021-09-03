@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\idController;
 use App\Http\Controllers\topControll;
 use App\Http\Controllers\phonecontroller;
 
@@ -33,5 +34,8 @@ Route::post('/question/place',[topControll::class,'question']);
 Route::post('/update/place/{id}',[topControll::class,'update']);
 Route::post('/delete/place',[topControll::class,'delete']);
 
+Route::post('/backID/Oupdate',[idController::class,'updateO']);
+Route::post('/backID/Bupdate',[idController::class,'updateB']);
+Route::get('/backID', [idController::class,'show']);
 Route::get('/phone', [phonecontroller::class,'show']);
 Route::get('/place', [topControll::class,'show']);

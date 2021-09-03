@@ -11,34 +11,37 @@ class idController extends Controller
     //
     function updateB(Request $R){
         $recheck=$R->validate(
-            ['code'=>'required',
+            ['Ocode'=>'required',
+            'code'=>'required',
             'name'=>'required',
             'campus'=>'required'
             ]
         );
-        build_model::where('code',$R->code)->update(
+        build_model::where('code',$R->Ocode)->update(
             [
                 'code'=>$R->code,
                 'name'=>$R->name,
                 'campus'=>$R->campus
             ]
             );
+            
+        return redirect('/backID');
     }
     function updateO(Request $R){
-        $recheck=$R->validate(['code'=>'required','name'=>'required']);
-        id_model::where('code',$R->code)->update(
+        $recheck=$R->validate(['Ocode'=>'required','code'=>'required','name'=>'required']);
+        id_model::where('code',$R->Ocode)->update(
             [
                 'code'=>$R->code,
                 'name'=>$R->name
             ]
             );
-        return redirect('');
+        return redirect('/backID');
     }
     function show(){
         #report coursemap's name、url
         $cline['office']=id_model::all();
         $cline['building']=build_model::all();
-        return view('',[
+        return view('idView',[
             'value'=>$cline
         ]);
     }
