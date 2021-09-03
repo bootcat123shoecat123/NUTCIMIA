@@ -9,8 +9,30 @@ use Illuminate\Http\Request;
 class idController extends Controller
 {
     //
-    function update(Request $R){
-        $recheck=$R->validate(['name'=>'required']);
+    function updateB(Request $R){
+        $recheck=$R->validate(
+            ['code'=>'required',
+            'name'=>'required',
+            'campus'=>'required'
+            ]
+        );
+        build_model::where('code',$R->code)->update(
+            [
+                'code'=>$R->code,
+                'name'=>$R->name,
+                'campus'=>$R->campus
+            ]
+            );
+    }
+    function updateO(Request $R){
+        $recheck=$R->validate(['code'=>'required','name'=>'required']);
+        id_model::where('code',$R->code)->update(
+            [
+                'code'=>$R->code,
+                'name'=>$R->name
+            ]
+            );
+        return redirect('');
     }
     function show(){
         #report coursemap's name、url
